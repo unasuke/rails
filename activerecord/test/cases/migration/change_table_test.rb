@@ -228,6 +228,14 @@ module ActiveRecord
         end
       end
 
+      def test_change_table_comment
+        skip unless ActiveRecord::Base.connection.supports_comments?
+        with_change_table do |t|
+          @connection.expect :change_table_comment, nil, [:delete_me, "changed comment"]
+          t.change_table_comment "changed comment"
+        end
+      end
+
       def test_remove_drops_single_column
         with_change_table do |t|
           @connection.expect :remove_columns, nil, [:delete_me, :bar]

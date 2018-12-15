@@ -615,6 +615,15 @@ module ActiveRecord
         @base.change_column_default(name, column_name, default_or_changes)
       end
 
+      # Change the comment for the table.
+      #
+      #  t.change_table_comment('new table comment')
+      #
+      # See {connection.change_table_comment}[rdoc-ref:SchemaStatements#change_table_comment]
+      def change_table_comment(comment)
+        @base.change_table_comment(@name, comment)
+      end
+
       # Removes the column(s) from the table definition.
       #
       #  t.remove(:qualification)

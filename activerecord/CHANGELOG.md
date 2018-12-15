@@ -1,3 +1,13 @@
+*   Support change_table_comment to change table comment in block of change_table in migration file.
+
+    ```ruby
+    change_table :posts do |t|
+      t.change_table_comment 'Users post'
+    end
+    ```
+
+    *Yusuke Nakamura*
+
 *   Fix join table column quoting with SQLite.
 
     *Gannon McGibbon*
